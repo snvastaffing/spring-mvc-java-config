@@ -13,6 +13,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+
+<style>
+.error{
+    color:red;
+}
+</style>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
 
 
@@ -21,7 +27,7 @@
   </head>
   <body>
     <!-- Navbar -->
-    <section class="mb-5"> <%@ include file="include/nav.jsp" %> </section>
+    <section class="mb-5"> <%@include file="include/nav.jsp" %> </section>
 
 <section id="main" class="mt-5 container p-5">
 
@@ -31,20 +37,24 @@
       <dj:label path="firstName"  class="form-label">First Name</dj:label>
       <dj:input  path="firstName" type="text" class="form-control" aria-describedby="emailHelp"/>
       <div id="firstNameHelp" class="form-text">Enter the first name here.</div>
+      <div><dj:errors path="firstName" class="error" /></div>
     </div>
     <div class="mb-3">
       <dj:label path="lastName" class="form-label">Last Name</dj:label>
       <dj:input path="lastName" type="text" class="form-control"  aria-describedby="emailHelp" />
+      <div><dj:errors path="lastName" class="error" /></div>
       <div id="lastNameHelp" class="form-text">Enter the last name here.</div>
     </div>
     <div class="mb-3">
       <dj:label path="email"  class="form-label">Email</dj:label>
       <dj:input path="email" type="email" class="form-control" />
-      <div id="emailHelp" class="form-text">We never share such Information with others</div>
+      <div><dj:errors path="email" class="error" /></div>
+      <div id="emailHelp" class="form-text">Only Students can make a signup</div>
     </div>
     <div class="mb-3">
       <dj:label path="contactNumber"  class="form-label">Contact</dj:label>
       <dj:input path="contactNumber" type="tel" class="form-control" />
+      <div><dj:errors path="contactNumber" class="error" /></div>
       <div id="contactHelp" class="form-text">We never share such Information with others</div>
     </div>
     <div class="mb-3 form-check">

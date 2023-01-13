@@ -1,0 +1,5 @@
+com\snva\smvcjava\controller\command\Employee.class
+config\MVCconfig.class
+com\snva\smvcjava\controller\HelloController.class
+com\snva\smvcjava\controller\EmployeeController.class
+config\WebInitilizer.class

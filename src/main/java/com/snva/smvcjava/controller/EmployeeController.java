@@ -4,9 +4,11 @@ import com.snva.smvcjava.controller.command.Employee;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,12 +26,17 @@ public class EmployeeController {
     }
 
     @RequestMapping(path = "/addemployee", method = RequestMethod.POST)
-    public ModelAndView employeeAdd(@ModelAttribute Employee employee,
+    public ModelAndView employeeAdd(@ModelAttribute("command") @Valid Employee employee,
+                                    BindingResult bindingResult,
                                     ModelMap modelMap){
-        employees.add(employee);
-        // We will make cour service calls --> dao -->> db
-        modelMap.put("employees",employees);
-        return  new ModelAndView("employee","command",new Employee());
+        if (bindingResult.hasErrors()){
+        }
+        else{
+            employees.add(employee);
+            modelMap.put("employees",employees);
+        }
+        //return new ModelAndView("employee","command",new Employee());
+          return  new ModelAndView("employee");
     }
 
 //    static  List<String> empNames = new ArrayList<>();
